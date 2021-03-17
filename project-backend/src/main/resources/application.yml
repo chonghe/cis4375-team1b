@@ -4,8 +4,8 @@ spring:
     #MySQL配置
     driverClassName:  com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://168.138.40.98:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-    username: admin
-    password: Pz+20180101
+    username: dev
+    password: ricekitchen1
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
