@@ -3,9 +3,9 @@ spring:
   datasource:
     #MySQL配置
     driverClassName:  com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://168.138.40.98:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-    username: dev
-    password: ricekitchen1
+    url: jdbc:mysql://database-1.cbpvgqc2xtqy.us-east-2.rds.amazonaws.com:3306/schedule?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: team1b
+    password: codebrewers4375
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
