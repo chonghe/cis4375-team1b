@@ -26,7 +26,12 @@
     </div>
 </template>
 <script>
+//import Welcome from './Welcome'
 export default {
+    // props:{
+    //     username:"",
+    //     password:""
+    // },
     data(){
         return{
             loginForm:{
@@ -58,9 +63,12 @@ export default {
             this.$refs.loginFormRef.validate(async valid => {
                 if(!valid) return;  //验证失败 取反，验证不通过就跳出 返回， 什么都不做
                 const {data:res} = await this.$http.post("login",this.loginForm); //访问后台 传递参数
-                if(res.flag == "ok"){
+                this.$emit("loginEmit",this.loginForm.username)
+                //console.log(res);
+                if(res.code == "200"){
                     this.$message.success("operation success")
-                    window.sessionStorage.setItem("user",res.user);   //存储user对象
+                    window.sessionStorage.setItem("user",JSON.stringify(res.data));   //存储user对象 
+                    
                     this.$router.push({path:"/home"})
                     //console.log(res.user);
                     
@@ -68,7 +76,11 @@ export default {
                     this.$message.error("operation failed")
                 }
             })
-        }
+            
+        },
+        // loginEmit(){
+        //     this.$emit("loginEmit",this.loginForm.username)
+        // }
     }
 }
 </script>

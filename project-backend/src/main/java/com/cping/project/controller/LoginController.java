@@ -2,14 +2,19 @@ package com.cping.project.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.cping.project.bean.User;
+import com.cping.project.bean.vo.LoginVo;
+import com.cping.project.common.Result;
 import com.cping.project.dao.UserDao;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 @RestController
 @RequestMapping("/api")
@@ -20,9 +25,10 @@ public class LoginController {
     UserDao userDao;
 
     @RequestMapping("/login")
-    public String login(@RequestBody User user){
+    /*public String login(@RequestBody User user){
+        //origin
         String flag = "error";
-        User us = userDao.getUserByMassage(user.getUsername(), user.getPassword());
+        User us = userDao.getUserByMassage(user.getUsername(),user.getPassword());
         System.out.println("user:" + us);
         HashMap<String, Object> res = new HashMap<>();
         if (us != null) {
@@ -32,5 +38,33 @@ public class LoginController {
         res.put("user", user);
         String res_json = JSON.toJSONString(res);
         return res_json;
+    }*/
+    public Result login(@RequestBody User user) {
+        //String flag = "error";
+        String username = user.getUsername();
+        Subject subject = SecurityUtils.getSubject();
+//        subject.getSession().setTimeout(10000);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, user.getPassword());
+        HashMap<String, Object> res = new HashMap<>();
+        try {
+            subject.login(token);
+            res.put("username", token.getUsername());
+            res.put("password", token.getPassword());
+            return Result.succ(res);
+            /*String flag = "ok";
+            res.put("flag", flag);
+            res.put("user", usernamePasswordToken);
+            String res_json = JSON.toJSONString(res);
+            return res_json;*/
+        } catch (AuthenticationException e) {
+            return null;
+        }
+
+    }
+
+    @RequestMapping("/noauth")
+    @ResponseBody
+    public String unauthorized(){
+        return "未经授权无法访问";
     }
 }

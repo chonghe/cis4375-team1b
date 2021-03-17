@@ -6,8 +6,8 @@
 <mapper namespace="com.cping.project.dao.UserDao">
     <select id="getUserByMassage" resultType="com.cping.project.bean.User">
         select * from user where
-        username=#{username} and password=#{password} and state=1
--- username和password对应的是Userdao里的param参数
+        username=#{username} and state=1
+
     </select>
 
     <select id="getAllUser" resultType="com.cping.project.bean.User">

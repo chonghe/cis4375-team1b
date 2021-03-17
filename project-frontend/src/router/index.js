@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
+import Noauth from '../components/Noauth.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 import UserList from '../components/admin/UserList.vue'
@@ -26,6 +27,10 @@ const routes = [
       {path:'/user', component:UserList,},
       {path:'/customer', component:CustomerList,},
     ]
+  },
+  {
+    path:'/noauth',
+    component: Noauth
   }
 ]
 

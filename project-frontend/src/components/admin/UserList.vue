@@ -4,8 +4,7 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">Home</el-breadcrumb-item>
-      <el-breadcrumb-item>Authorization manage</el-breadcrumb-item>
-      <el-breadcrumb-item>User manage</el-breadcrumb-item>
+      <el-breadcrumb-item to="/user">User manage</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 用户列表主题部分 -->
     <el-card>
