@@ -25,21 +25,12 @@ public class LoginController {
     UserDao userDao;
 
     @RequestMapping("/login")
-    /*public String login(@RequestBody User user){
+    public Result login(@RequestBody LoginVo loginVo){
         //origin
-        String flag = "error";
-        User us = userDao.getUserByMassage(user.getUsername(),user.getPassword());
-        System.out.println("user:" + us);
-        HashMap<String, Object> res = new HashMap<>();
-        if (us != null) {
-            flag = "ok";
-        }
-        res.put("flag", flag);
-        res.put("user", user);
-        String res_json = JSON.toJSONString(res);
-        return res_json;
-    }*/
-    public Result login(@RequestBody User user) {
+        User login = userDao.login(loginVo);
+        return Result.succ(login);
+    }
+    /*public Result login(@RequestBody User user) {
         //String flag = "error";
         String username = user.getUsername();
         Subject subject = SecurityUtils.getSubject();
@@ -51,16 +42,16 @@ public class LoginController {
             res.put("username", token.getUsername());
             res.put("password", token.getPassword());
             return Result.succ(res);
-            /*String flag = "ok";
+            *//*String flag = "ok";
             res.put("flag", flag);
             res.put("user", usernamePasswordToken);
             String res_json = JSON.toJSONString(res);
-            return res_json;*/
+            return res_json;*//*
         } catch (AuthenticationException e) {
             return null;
         }
 
-    }
+    }*/
 
     @RequestMapping("/noauth")
     @ResponseBody

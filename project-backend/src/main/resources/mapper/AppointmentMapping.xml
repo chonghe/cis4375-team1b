@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cping.project.dao.AppointmentDao">
+    <insert id="addAppointment" parameterType="com.cping.project.bean.Appointment">
+        insert into appointment
+            (customer_firstname,customer_lastname,time,date,service_type,notes)
+            value
+            (#{customer_firstname},#{customer_lastname},#{time},#{date},#{service_type},#{notes})
+    </insert>
+
+    <select id="getAllAppointment" resultType="com.cping.project.bean.Appointment">
+        select * from appointment
+    </select>
+</mapper>
