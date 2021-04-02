@@ -20,23 +20,27 @@
           :router="true"
           :default-active="activePath"
         >
+        <el-menu-item @click="openAppointment">
+          <i class="el-icon-date"></i>
+          <span>Appointment manage</span>
+        </el-menu-item>
         <!-- unique-opened="" -->
-
+          
         <!-- 一级菜单 -->
-          <el-submenu :index="item.id+''" v-for="item in menuList" :key="item.id" @click="saveNavState(it.path)">
+          <!-- <el-submenu :index="item.id+''" v-for="item in menuList" :key="item.id" @click="saveNavState(it.path)">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>{{item.title}}</span>
-            </template>
+            </template> -->
             <!-- 二级菜单 -->
             <!-- 路由跳转根据index，而且it.path本身就是字符串 -->
-            <el-menu-item :index="it.path" v-for="it in item.sList" :key="it.id">
+            <!-- <el-menu-item :index="it.path" v-for="it in item.sList" :key="it.id">
               <template slot="title">
                 <i class="el-icon-location"></i>
                 <span>{{it.title}}</span>
               </template>
             </el-menu-item>
-          </el-submenu>
+          </el-submenu> -->
         </el-menu>
       </el-aside>
       <el-main>
@@ -56,7 +60,7 @@ export default {
       }  
     },
     created(){
-        this.getMenuList();
+        //this.getMenuList();
         window.sessionStorage.getItem('activePath');  //取出session里的path 动态修改activePath
     },
   methods: {
@@ -82,6 +86,9 @@ export default {
     saveNavState(activePath){
       window.sessionStorage.setItem('activePath',activePath); //存放在session里
       this.activePath = activePath
+    },
+    openAppointment(){
+      this.$router.push("/appointment")
     }
   },
 };
@@ -129,5 +136,9 @@ img {
     text-align: center;
     letter-spacing: 0.2em;
     cursor: pointer;    // 显示小手
+}
+.el-menu-item {
+  height: 60px;
+  line-height: 60px;
 }
 </style>

@@ -4,8 +4,8 @@ import Login from '../components/Login.vue'
 import Noauth from '../components/Noauth.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
-import UserList from '../components/admin/UserList.vue'
-import CustomerList from '../components/admin/CustomerList.vue'
+//import UserList from '../components/admin/UserList.vue'
+import Appointment from '../components/admin/Appointment.vue'
 
 Vue.use(VueRouter)
 
@@ -24,8 +24,8 @@ const routes = [
     redirect:'/welcome',
     children:[
       {path:'/welcome', component:Welcome,},
-      {path:'/user', component:UserList,},
-      {path:'/customer', component:CustomerList,},
+      //{path:'/user', component:UserList,},
+      {path:'/appointment', component:Appointment,},
     ]
   },
   {

@@ -4,6 +4,7 @@ import com.cping.project.bean.User;
 import com.cping.project.bean.vo.LoginVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -11,7 +12,8 @@ import java.util.List;
 public interface UserDao {
     //使用shiro
     public User getUserByMassage(@Param("username") String username);
-    //public User getUserByMassage(@Param("username") String username,@Param("password") String password);
+
+    public User login(@RequestBody LoginVo loginVo);
 
     //public User getUserByMassage(@Param("username") String username, @Param("password") String password);
 
