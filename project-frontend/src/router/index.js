@@ -7,6 +7,7 @@ import Welcome from '../components/Welcome.vue'
 //import UserList from '../components/admin/UserList.vue'
 import Appointment from '../components/admin/Appointment.vue'
 import Customer from '../components/admin/Customer.vue'
+import Membership from '../components/admin/Membership.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -27,6 +28,8 @@ const routes = [
       //{path:'/user', component:UserList,},
       {path:'/appointment', component:Appointment,},
       {path:'/customer', component:Customer,},
+            {path:'/membership', component:Membership,},
+
     ]
   },
   {
