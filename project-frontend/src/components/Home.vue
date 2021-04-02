@@ -24,6 +24,14 @@
           <i class="el-icon-date"></i>
           <span>Appointment manage</span>
         </el-menu-item>
+                        <el-menu-item @click="openCustomer">
+          <i class="el-icon-date"></i>
+          <span>Customer manage</span>
+        </el-menu-item>
+                        <el-menu-item @click="openMembership">
+          <i class="el-icon-date"></i>
+          <span>Memberships</span>
+        </el-menu-item>
         <!-- unique-opened="" -->
           
         <!-- 一级菜单 -->
@@ -89,7 +97,15 @@ export default {
     },
     openAppointment(){
       this.$router.push("/appointment")
-    }
+    },
+
+        openCustomer(){
+      this.$router.push("/customer")
+    },
+        openMembership(){
+      this.$router.push("/membership")
+    },
+    
   },
 };
 </script>
