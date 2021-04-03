@@ -6,6 +6,7 @@ import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 //import UserList from '../components/admin/UserList.vue'
 import Appointment from '../components/admin/Appointment.vue'
+import Employee from '../components/admin/EmployeeList.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,7 @@ const routes = [
       {path:'/welcome', component:Welcome,},
       //{path:'/user', component:UserList,},
       {path:'/appointment', component:Appointment,},
+      {path: '/employee', component:Employee,},
     ]
   },
   {

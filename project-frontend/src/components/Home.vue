@@ -3,7 +3,7 @@
     <el-header>
       <div>
         <img src="../assets/logo.png" alt />
-        <span>Schedual management System</span>
+        <span>Schedule Management System</span>
       </div>
       <el-button type="info" @click="logout">logout</el-button>
     </el-header>
@@ -23,6 +23,10 @@
         <el-menu-item @click="openAppointment">
           <i class="el-icon-date"></i>
           <span>Appointment manage</span>
+        </el-menu-item>
+        <el-menu-item @click="openEmployee">
+          <i class="el-icon-date"></i>
+          <span>Employee manage</span>
         </el-menu-item>
         <!-- unique-opened="" -->
           
@@ -89,6 +93,9 @@ export default {
     },
     openAppointment(){
       this.$router.push("/appointment")
+    },
+    openEmployee(){
+      this.$router.push("/employee")
     }
   },
 };
