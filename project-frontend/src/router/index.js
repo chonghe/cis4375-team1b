@@ -6,7 +6,7 @@ import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 //import UserList from '../components/admin/UserList.vue'
 import Appointment from '../components/admin/Appointment.vue'
-import Employee from '../components/admin/EmployeeList.vue'
+import Employee from '../components/EmployeeList.vue'
 
 Vue.use(VueRouter)
 
