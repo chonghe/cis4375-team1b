@@ -2,6 +2,7 @@ package com.cping.project.dao;
 
 import com.cping.project.bean.Appointment;
 import com.cping.project.bean.User;
+import com.cping.project.bean.vo.AppointmentVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +23,7 @@ public interface AppointmentDao {
 
     public Appointment getUpdateAppointment(int id);
 
-    public int editUser(Appointment appointment);
+    public int editAppointment(Appointment appointment);
+
+    public List<Appointment> getSearch(AppointmentVo appointmentVo);
 }

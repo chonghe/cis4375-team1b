@@ -24,6 +24,10 @@
           <i class="el-icon-date"></i>
           <span>Appointment manage</span>
         </el-menu-item>
+        <el-menu-item @click="openCalendar">
+          <i class="el-icon-date"></i>
+          <span>Appointment calendar</span>
+        </el-menu-item>
         <!-- unique-opened="" -->
           
         <!-- 一级菜单 -->
@@ -89,6 +93,9 @@ export default {
     },
     openAppointment(){
       this.$router.push("/appointment")
+    },
+    openCalendar(){
+      this.$router.push("/calendar")
     }
   },
 };

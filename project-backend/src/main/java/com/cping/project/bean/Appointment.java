@@ -11,15 +11,14 @@ public class Appointment {
     private String customer_firstname;
     private String customer_lastname;
     private String time;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private String date;
     private String service_type;
     private String notes;
 
     public Appointment() {
     }
 
-    public Appointment(String customer_firstname, String customer_lastname, String time, Date date, String service_type, String notes) {
+    public Appointment(String customer_firstname, String customer_lastname, String time, String date, String service_type, String notes) {
         this.customer_firstname = customer_firstname;
         this.customer_lastname = customer_lastname;
         this.time = time;
@@ -60,11 +59,11 @@ public class Appointment {
         this.time = time;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

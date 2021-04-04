@@ -6,7 +6,12 @@
       <div class="avatar_box">
         <img src="../assets/logo.png" alt="" srcset="" />
       </div>
-      <el-tabs type="border-card" v-model="activeName" class="login_form" :stretch=true>
+      <el-tabs
+        type="border-card"
+        v-model="activeName"
+        class="login_form"
+        :stretch="true"
+      >
         <el-tab-pane label="Customer" name="first">
           <el-button class="log_btn" type="primary" @click="makeAppointment"
             >Appoinment</el-button
@@ -55,14 +60,18 @@
         width="30%"
         append-to-body
       >
-        <el-form ref="customerForm" :model="customerForm" label-width="100px">
-          <el-form-item label="FirstName">
+        <el-form
+          ref="customerFormRef"
+          :model="customerForm"
+          label-width="100px"
+        >
+          <el-form-item label="FirstName" prop="customer_firstname">
             <el-input v-model="customerForm.customer_firstname"></el-input>
           </el-form-item>
-          <el-form-item label="LastName">
+          <el-form-item label="LastName" prop="customer_lastname">
             <el-input v-model="customerForm.customer_lastname"></el-input>
           </el-form-item>
-          <el-form-item label="Service Type">
+          <el-form-item label="Service Type" prop="service_type">
             <el-select
               v-model="customerForm.service_type"
               placeholder="choose service"
@@ -85,7 +94,7 @@
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="Service Date">
+          <el-form-item label="Service Date" prop="date">
             <el-col :span="11">
               <el-date-picker
                 type="date"
@@ -93,6 +102,7 @@
                 v-model="customerForm.date"
                 value-format="yyyy-MM-dd"
                 style="width: 100%"
+                :picker-options="pickerOptions"
               ></el-date-picker>
             </el-col>
             <el-col class="line" :span="2">-</el-col>
@@ -111,12 +121,12 @@
               ></el-time-select>
             </el-col>
           </el-form-item>
-          <el-form-item label="Note">
+          <el-form-item label="Note" prop="notes">
             <el-input type="textarea" v-model="customerForm.notes"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">Submit</el-button>
-            <el-button @click="dialogVisible = false">Cancel</el-button>
+            <el-button @click="cancelApp">Cancel</el-button>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -143,9 +153,15 @@ export default {
         customer_lastname: "",
         service_type: "",
         date: "",
-        time: '',
+        time: "",
         notes: "",
       },
+      pickerOptions: {
+        disabledDate: (date)=>{
+          return this.dealDisabledDate(date)
+        }
+      },
+
       // 表单验证
       // 1. :rule=" " 绑定表单
       // 2. 添加prop名称 并为每个prop添加验证条件
@@ -201,9 +217,19 @@ export default {
         this.$message.error("operation failed");
       }
     },
-    // loginEmit(){
-    //     this.$emit("loginEmit",this.loginForm.username)
-    // }
+    cancelApp() {
+      this.dialogVisible = false;
+      this.$refs.customerFormRef.resetFields();
+      //this.customerForm.time=''
+    },
+    dealDisabledDate(date) {
+      let datePicker = new Date().setHours(1, 0, 0, 0);
+      if (date.getTime() < datePicker) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 };
 </script>

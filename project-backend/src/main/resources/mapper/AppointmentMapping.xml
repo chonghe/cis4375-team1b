@@ -14,4 +14,28 @@
     <select id="getAllAppointment" resultType="com.cping.project.bean.Appointment">
         select * from appointment
     </select>
+
+    <select id="getSearch" parameterType="com.cping.project.bean.vo.AppointmentVo" resultType="com.cping.project.bean.Appointment">
+        select * from appointment
+        <where>
+        <if test="begin !=null">
+            and date &gt;= #{begin}
+        </if>
+        <if test="end != null">
+            and date &lt;= #{end}
+        </if>
+        </where>
+    </select>
+
+    <select id="getUpdateAppointment" resultType="com.cping.project.bean.Appointment">
+        select * from appointment where id = #{id}
+    </select>
+
+    <update id="editAppointment">
+        update appointment set #{customer_firstname},#{customer_lastname},#{time},#{date},#{service_type},#{notes} where id=#{id}
+    </update>
+
+    <delete id="deleteAppointment">
+        delete from appointment where id = #{id}
+    </delete>
 </mapper>
