@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Appointment {
-    private int id;
+    private int appointment_id;
     private String customer_firstname;
     private String customer_lastname;
     private String time;
@@ -27,12 +27,12 @@ public class Appointment {
         this.notes = notes;
     }
 
-    public int getId() {
-        return id;
+    public int getAppointment_id() {
+        return appointment_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAppointment_id(int appointment_id) {
+        this.appointment_id = appointment_id;
     }
 
     public String getCustomer_firstname() {
@@ -86,11 +86,11 @@ public class Appointment {
     @Override
     public String toString() {
         return "Appointment{" +
-                "id=" + id +
+                "appointment_id=" + appointment_id +
                 ", customer_firstname='" + customer_firstname + '\'' +
                 ", customer_lastname='" + customer_lastname + '\'' +
-                ", time=" + time +
-                ", date=" + date +
+                ", time='" + time + '\'' +
+                ", date='" + date + '\'' +
                 ", service_type='" + service_type + '\'' +
                 ", notes='" + notes + '\'' +
                 '}';

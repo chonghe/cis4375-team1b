@@ -19,9 +19,9 @@ public interface AppointmentDao {
 
     public int addAppointment(Appointment appointment);
 
-    public int deleteAppointment(int id);
+    public int deleteAppointment(int appointment_id);
 
-    public Appointment getUpdateAppointment(int id);
+    public Appointment getUpdateAppointment(int appointment_id);
 
     public int editAppointment(Appointment appointment);
 

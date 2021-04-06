@@ -77,14 +77,14 @@
               type="primary"
               icon="el-icon-edit"
               size="mini"
-              @click="showEditDialog(scope.row.id)"
+              @click="showEditDialog(scope.row.appointment_id)"
             ></el-button>
             <!-- 删除 -->
             <el-button
               type="danger"
               icon="el-icon-delete"
               size="mini"
-              @click="deleteAppointment(scope.row.id)"
+              @click="deleteAppointment(scope.row.appointment_id)"
             ></el-button>
           </template>
         </el-table-column>
@@ -168,7 +168,7 @@
     </el-dialog>
 
     <el-dialog
-      title="Edit User"
+      title="Edit Appointment"
       :visible.sync="editDialogVisible"
       width="50%"
       @close="editDialogClosed"
@@ -236,7 +236,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="editDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="editUser">Confirm</el-button>
+        <el-button type="primary" @click="editAppointment">Confirm</el-button>
       </span>
     </el-dialog>
   </div>
@@ -249,16 +249,7 @@ export default {
       editForm: {},
       editDialogVisible: false,
       dialogVisible: false,
-      customerForm: [
-        {
-          customer_firstname: "",
-          customer_lastname: "",
-          service_type: "",
-          date: "",
-          time: "",
-          notes: "",
-        },
-      ],
+      customerForm: [],
       customerFormDia: {
         customer_firstname: "",
         customer_lastname: "",
@@ -272,11 +263,7 @@ export default {
           return this.dealDisabledDate(date);
         },
       },
-      appointmentInline: {
-        //lastname:'',
-        begin: "",
-        end: "",
-      },
+      appointmentInline: {},
     };
   },
   methods: {
@@ -297,7 +284,8 @@ export default {
       if (res.code == "200") {
         this.$message.success("operation success");
         this.dialogVisible = false;
-        this.customerFormDia = "";
+        this.$refs.customerFormDia.resetFields()
+        this.getAllAppointment()
       } else {
         this.$message.error("operation failed");
       }
@@ -327,7 +315,7 @@ export default {
         return false;
       }
     },
-    async deleteUser(id) {
+    async deleteAppointment(appointment_id) {
       const confirmResult = await this.$confirm("Are you sure?", "warning", {
         confirmButtonText: "confirm",
         cancelButtonText: "cancel",
@@ -338,7 +326,7 @@ export default {
         return this.$message.info("canceled");
       }
       const { data: res } = await this.$http.delete(
-        "deleteAppointment?id=" + id
+        `deleteAppointment/${appointment_id}`
       );
       if (res != "success") {
         return this.$message.error("Failed !!!");
@@ -346,23 +334,21 @@ export default {
       this.$message.success("Success !!!");
       this.getAllAppointment();
     },
-    async showEditDialog(id) {
-      const { data: res } = await this.$http.get("getUpdate?id=" + id);
-      this.editForm = res;
+    async showEditDialog(appointment_id) {
+      const { data: res } = await this.$http.get(`getUpdate/${appointment_id}`);
+      this.editForm = res.data;
       this.editDialogVisible = true;
+      console.log(res.data);
     },
-    editUser() {
-      this.$refs.editFormRef.validate(async (valid) => {
-        if (!valid) return;
-        const { data: res } = await this.$http.put("edituser", this.editForm);
-        if (res != "success") {
-          return this.$message.error("Failed !!!");
-        }
-        this.$message.success("Success !!!");
-        //隐藏对话框
-        this.editDialogVisible = false;
-        this.getUserList();
-      });
+    async editAppointment() {
+      const { data: res } = await this.$http.put("editAppointment", this.editForm);
+      if (res != "success") {
+        return this.$message.error("Failed !!!");
+      }
+      this.$message.success("Success !!!");
+      //隐藏对话框
+      this.editDialogVisible = false;
+      this.getAllAppointment();
     },
     editDialogClosed() {
       this.$refs.editFormRef.resetFields(); //重置信息

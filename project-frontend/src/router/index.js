@@ -6,7 +6,6 @@ import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 import Calendar from '../components/admin/Calendar.vue'
 import Appointment from '../components/admin/Appointment.vue'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,7 +20,7 @@ const routes = [
   {
     path:'/home',
     component:Home,
-    redirect:'/welcome',
+    redirect:'/calendar',
     children:[
       {path:'/welcome', component:Welcome,},
       {path:'/calendar', component:Calendar,},

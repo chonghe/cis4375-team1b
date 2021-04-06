@@ -7,6 +7,7 @@ import com.cping.project.bean.vo.AppointmentVo;
 import com.cping.project.common.Result;
 import com.cping.project.dao.AppointmentDao;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,20 +39,20 @@ public class AppointmentController {
         return Result.succ(search);
     }
 
-    @RequestMapping("/deleteAppointment")
-    public String deleteUser(int id) {
-        int i = appointmentDao.deleteAppointment(id);
+    @DeleteMapping("/deleteAppointment/{appointment_id}")
+    public String deleteAppointment(@PathVariable("appointment_id") int appointment_id) {
+        int i = appointmentDao.deleteAppointment(appointment_id);
         return i > 0 ? "success" : "error";
     }
 
-    @RequestMapping("/getUpdate")
-    public Result getUpdateUser(int id){
-        Appointment appointment = appointmentDao.getUpdateAppointment(id);
+    @RequestMapping("/getUpdate/{appointment_id}")
+    public Result getUpdateAppointment(@PathVariable("appointment_id") int appointment_id){
+        Appointment appointment = appointmentDao.getUpdateAppointment(appointment_id);
         return Result.succ(appointment);
     }
 
-    @RequestMapping("/editAppointment")
-    public String editUser(@RequestBody Appointment appointment) {
+    @PutMapping("/editAppointment")
+    public String editAppointment(@RequestBody Appointment appointment) {
         int i = appointmentDao.editAppointment(appointment);
         return i > 0 ? "success" : "error";
     }
