@@ -27,6 +27,8 @@
                         <el-menu-item @click="openCustomer">
           <i class="el-icon-date"></i>
           <span>Customer manage</span>
+                  </el-menu-item>
+
         <!-- unique-opened="" -->
           
         <!-- 一级菜单 -->
