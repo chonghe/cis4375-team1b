@@ -4,10 +4,12 @@ import Login from '../components/Login.vue'
 import Noauth from '../components/Noauth.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
-//import UserList from '../components/admin/UserList.vue'
 import Appointment from '../components/admin/Appointment.vue'
 import Customer from '../components/admin/Customer.vue'
-import Membership from '../components/admin/Membership.vue'
+import Employee from '../components/admin/EmployeeList.vue'
+import EmpHome from '../components/EmpHome.vue'
+import EmpCustomer from '../components/EmpCustomer.vue'
+import EmpAppointment from '../components/EmpAppointment.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,13 +27,22 @@ const routes = [
     redirect:'/welcome',
     children:[
       {path:'/welcome', component:Welcome,},
-      //{path:'/user', component:UserList,},
       {path:'/appointment', component:Appointment,},
       {path:'/customer', component:Customer,},
-            {path:'/membership', component:Membership,},
-
+      {path: '/employee', component:Employee,},
     ]
   },
+  
+  {
+    path:'/emphome',
+    component:EmpHome,
+    children:[
+      {path:'/welcome', component:Welcome,},
+      {path:'/empappointment', component:EmpAppointment,},
+      {path:'/empcustomer', component:EmpCustomer,},
+    ]
+  },
+  
   {
     path:'/noauth',
     component: Noauth
