@@ -25,7 +25,7 @@
               <el-input
                 prefix-icon="el-icon-user"
                 v-model="loginForm.username"
-                placeholder="User Name"
+                placeholder="Employee Username"
               ></el-input>
             </el-form-item>
             <!-- password -->
@@ -39,7 +39,39 @@
             </el-form-item>
             <!-- button -->
             <el-form-item class="btns">
-              <el-button type="primary" @click="login">Submit</el-button>
+              <el-button type="primary" @click="emplogin">Login</el-button>
+              <el-button type="info" @click="resetLoginForm">Reset</el-button>
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
+                <el-tab-pane label="Admin" name="third">
+          <!-- form block -->
+          <el-form
+            ref="loginFormRef"
+            :rules="loginRules"
+            :model="loginForm"
+            label-width="0"
+          >
+            <!-- user name -->
+            <el-form-item prop="username">
+              <el-input
+                prefix-icon="el-icon-user"
+                v-model="loginForm.username"
+                placeholder="Admin Username"
+              ></el-input>
+            </el-form-item>
+            <!-- password -->
+            <el-form-item prop="password">
+              <el-input
+                prefix-icon="el-icon-user-solid"
+                v-model="loginForm.password"
+                type="password"
+                placeholder="Password"
+              ></el-input>
+            </el-form-item>
+            <!-- button -->
+            <el-form-item class="btns">
+              <el-button type="primary" @click="login">Login</el-button>              
               <el-button type="info" @click="resetLoginForm">Reset</el-button>
             </el-form-item>
           </el-form>
@@ -184,6 +216,21 @@ export default {
         }
       });
     },
+        emplogin() {
+      this.$refs.loginFormRef.validate(async (valid) => {
+        if (!valid) return; 
+        const { data: res } = await this.$http.post("login", this.loginForm); 
+        this.$emit("loginEmit", this.loginForm.username);
+        if (res.code == "200") {
+          this.$message.success("operation success");
+          window.sessionStorage.setItem("user", JSON.stringify(res.data)); 
+
+          this.$router.push({ path: "/emphome" });
+        } else {
+          this.$message.error("operation failed");
+        }
+      });
+      },
     makeAppointment() {
       this.dialogVisible = true;
     },
