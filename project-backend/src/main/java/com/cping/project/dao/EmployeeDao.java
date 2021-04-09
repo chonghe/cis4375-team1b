@@ -1,6 +1,7 @@
 package com.cping.project.dao;
 
 import com.cping.project.bean.Employee;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,11 +15,11 @@ public interface EmployeeDao {
 
     public List<Employee> getAllEmployee();
 
-/*    public int addAppointment(Appointment appointment);
+    public int addEmployee(Employee employee);
 
-    public int deleteAppointment(int id);
+    public int deleteEmployee(int id);
 
-    public Appointment getUpdateAppointment(int id);
+    public Employee getUpdateEmployee(int id);
 
-    public int editUser(Appointment appointment);*/
+    public int editEmployee(Employee employee);
 }
