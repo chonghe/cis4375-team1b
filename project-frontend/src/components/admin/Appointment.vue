@@ -63,6 +63,8 @@
           width="180"
         >
         </el-table-column>
+        <el-table-column prop="phone_number" label="Phone Number">
+        </el-table-column>
         <el-table-column prop="service_type" label="Service Type">
         </el-table-column>
         <el-table-column prop="date" label="Appointment Date">
@@ -106,6 +108,9 @@
         </el-form-item>
         <el-form-item label="LastName" prop="customer_lastname">
           <el-input v-model="customerFormDia.customer_lastname"></el-input>
+        </el-form-item>
+        <el-form-item label="Phone" prop="phone_number">
+          <el-input v-model="customerForm.phone_number"></el-input>
         </el-form-item>
         <el-form-item label="Service Type" prop="service_type">
           <el-select
@@ -179,6 +184,9 @@
         </el-form-item>
         <el-form-item label="LastName" prop="customer_lastname">
           <el-input v-model="editForm.customer_lastname"></el-input>
+        </el-form-item>
+        <el-form-item label="Phone" prop="phone_number">
+          <el-input v-model="customerForm.phone_number"></el-input>
         </el-form-item>
         <el-form-item label="Service Type" prop="service_type">
           <el-select
@@ -257,6 +265,7 @@ export default {
         date: "",
         time: "",
         notes: "",
+        phone_number: "",
       },
       pickerOptions: {
         disabledDate: (date) => {
@@ -268,7 +277,7 @@ export default {
   },
   methods: {
     async getAllAppointment() {
-      const { data: res } = await this.$http.get("allAppointment");
+      const { data: res } = await this.$http.get("appointment/allAppointment");
       //console.log(res);
       this.customerForm = res.data;
     },
@@ -278,14 +287,14 @@ export default {
     async onSubmit() {
       //console.log(this.customerForm);
       const { data: res } = await this.$http.post(
-        "appointment",
+        "appointment/appointment",
         this.customerFormDia
       );
       if (res.code == "200") {
         this.$message.success("operation success");
         this.dialogVisible = false;
-        this.$refs.customerFormDia.resetFields()
-        this.getAllAppointment()
+        this.$refs.customerFormDia.resetFields();
+        this.getAllAppointment();
       } else {
         this.$message.error("operation failed");
       }
@@ -297,7 +306,7 @@ export default {
     },
     async SearchOnSubmit() {
       const { data: res } = await this.$http.post(
-        "getSearch",
+        "appointment/getSearch",
         this.appointmentInline
       );
       //console.log(res.data);
@@ -326,7 +335,7 @@ export default {
         return this.$message.info("canceled");
       }
       const { data: res } = await this.$http.delete(
-        `deleteAppointment/${appointment_id}`
+        `appointment/deleteAppointment/${appointment_id}`
       );
       if (res != "success") {
         return this.$message.error("Failed !!!");
@@ -335,13 +344,18 @@ export default {
       this.getAllAppointment();
     },
     async showEditDialog(appointment_id) {
-      const { data: res } = await this.$http.get(`getUpdate/${appointment_id}`);
+      const { data: res } = await this.$http.get(
+        `appointment/getUpdate/${appointment_id}`
+      );
       this.editForm = res.data;
       this.editDialogVisible = true;
       console.log(res.data);
     },
     async editAppointment() {
-      const { data: res } = await this.$http.put("editAppointment", this.editForm);
+      const { data: res } = await this.$http.put(
+        "appointment/editAppointment",
+        this.editForm
+      );
       if (res != "success") {
         return this.$message.error("Failed !!!");
       }

@@ -62,6 +62,7 @@
       >
         <el-form
           ref="customerFormRef"
+          :rules="customerFormRules"
           :model="customerForm"
           label-width="100px"
         >
@@ -70,6 +71,9 @@
           </el-form-item>
           <el-form-item label="LastName" prop="customer_lastname">
             <el-input v-model="customerForm.customer_lastname"></el-input>
+          </el-form-item>
+          <el-form-item label="Phone" prop="phone_number">
+            <el-input v-model="customerForm.phone_number"></el-input>
           </el-form-item>
           <el-form-item label="Service Type" prop="service_type">
             <el-select
@@ -155,6 +159,7 @@ export default {
         date: "",
         time: "",
         notes: "",
+        phone_number:""
       },
       pickerOptions: {
         disabledDate: (date)=>{
@@ -176,6 +181,20 @@ export default {
           { min: 6, max: 10, message: "6~10 longer", trigger: "blur" }, //长度验证
         ],
       },
+      customerFormRules:{
+        customer_firstname: [
+          { required: true, message: "customer firstname is required", trigger: "blur" }, //必填项验证
+        ],
+        service_type:[
+          { required: true, message: "service type is required", trigger: "blur" },
+        ],
+        date:[
+          { required: true, message: "date is required", trigger: "blur" },
+        ],
+        time:[
+          { required: true, message: "time is required", trigger: "blur" },
+        ]
+      }
     };
   },
   methods: {
@@ -187,8 +206,9 @@ export default {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) return; //验证失败 取反，验证不通过就跳出 返回， 什么都不做
         const { data: res } = await this.$http.post("login", this.loginForm); //访问后台 传递参数
+        //const { data: res } = await this.$http.post("login", {username:this.username,password:this.password})
         this.$emit("loginEmit", this.loginForm.username);
-        //console.log(res);
+        console.log(res);
         if (res.code == "200") {
           this.$message.success("operation success");
           window.sessionStorage.setItem("user", JSON.stringify(res.data)); //存储user对象
@@ -206,7 +226,7 @@ export default {
     async onSubmit() {
       console.log(this.customerForm);
       const { data: res } = await this.$http.post(
-        "appointment",
+        "appointment/appointment",
         this.customerForm
       );
       if (res.code == "200") {

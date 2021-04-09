@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-row>
-      <h1>welcome to management system,{{ user.username }}</h1>
+      <!-- <h1>welcome to management system,{{ user.username }}</h1> -->
     </el-row>
     <v-sheet height="64">
       <v-toolbar flat>
@@ -48,9 +48,9 @@ export default {
     starts: [],
     ends: [],
     focus: "",
-    user: {
-      username: "",
-    },
+    // user: {
+    //   username: "",
+    // },
   }),
   methods: {
     getCurrentDate() {
@@ -58,7 +58,7 @@ export default {
     },
     async getEvents() {
       const events = [];
-      const { data: res } = await this.$http.get("allAppointment");
+      const { data: res } = await this.$http.get("appointment/allAppointment");
       res.data.forEach((element) => {
         events.push({
           name: element.service_type,
@@ -88,7 +88,7 @@ export default {
   created() {
     //this.getCurrentDate();
     this.getEvents();
-    this.user = JSON.parse(window.sessionStorage.getItem("user"))
+    // this.user = JSON.parse(window.sessionStorage.getItem("user"))
   },
 };
 </script>

@@ -6,9 +6,9 @@
 <mapper namespace="com.cping.project.dao.AppointmentDao">
     <insert id="addAppointment" parameterType="com.cping.project.bean.Appointment">
         insert into appointment
-            (customer_firstname,customer_lastname,time,date,service_type,notes)
+            (customer_firstname,customer_lastname,time,date,service_type,notes,phone_number)
             value
-            (#{customer_firstname},#{customer_lastname},#{time},#{date},#{service_type},#{notes})
+            (#{customer_firstname},#{customer_lastname},#{time},#{date},#{service_type},#{notes},#{phone_number})
     </insert>
 
     <select id="getAllAppointment" resultType="com.cping.project.bean.Appointment">
@@ -50,7 +50,10 @@
                 service_type=#{service_type},
             </if>
             <if test="notes != null">
-                notes=#{notes}
+                notes=#{notes},
+            </if>
+            <if test="phone_number != null">
+                phone_number=#{phone_number}
             </if>
         </set>
         where appointment_id=#{appointment_id}

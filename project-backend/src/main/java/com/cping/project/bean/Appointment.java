@@ -14,17 +14,19 @@ public class Appointment {
     private String date;
     private String service_type;
     private String notes;
+    private String phone_number;
 
     public Appointment() {
     }
 
-    public Appointment(String customer_firstname, String customer_lastname, String time, String date, String service_type, String notes) {
+    public Appointment(String customer_firstname, String customer_lastname, String time, String date, String service_type, String notes, String phone_number) {
         this.customer_firstname = customer_firstname;
         this.customer_lastname = customer_lastname;
         this.time = time;
         this.date = date;
         this.service_type = service_type;
         this.notes = notes;
+        this.phone_number = phone_number;
     }
 
     public int getAppointment_id() {
@@ -63,6 +65,14 @@ public class Appointment {
         return date;
     }
 
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
     public void setDate(String date) {
         this.date = date;
     }
@@ -93,6 +103,7 @@ public class Appointment {
                 ", date='" + date + '\'' +
                 ", service_type='" + service_type + '\'' +
                 ", notes='" + notes + '\'' +
+                ", phone_number='" + phone_number + '\'' +
                 '}';
     }
 }
