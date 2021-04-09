@@ -24,11 +24,15 @@
           <i class="el-icon-date"></i>
           <span>Appointment manage</span>
         </el-menu-item>
+
+        <!-- <el-menu-item @click="openCalendar">
+          <i class="el-icon-date"></i>
+          <span>Appointment calendar</span>
+        </el-menu-item> -->
                         <el-menu-item @click="openCustomer">
           <i class="el-icon-date"></i>
           <span>Customer manage</span>
                   </el-menu-item>
-
         <!-- unique-opened="" -->
           
         <!-- 一级菜单 -->
@@ -59,7 +63,7 @@ export default {
     data(){
       return {
           // 菜单列表
-          menuList: [],
+          //menuList: [],
           isCollapse: false,  //伸缩
           activePath: '/welcome', //默认路径
       }  
@@ -75,27 +79,30 @@ export default {
       this.$router.push("/login"); //回到首页
     },
     // 获取导航菜单方法
-    async getMenuList(){
-        //console.log("导航菜单");
-        const {data:res} = await this.$http.get("menus");
-        console.log(res);
-        if(res.flag != 200) return this.$message.error("List failed");
-        this.menuList = res.menus;
-    },
+    // async getMenuList(){
+    //     //console.log("导航菜单");
+    //     const {data:res} = await this.$http.get("menus");
+    //     console.log(res);
+    //     if(res.flag != 200) return this.$message.error("List failed");
+    //     this.menuList = res.menus;
+    // },
     // 控制伸缩
     toggleCollapse(){
         //取反 显示or隐藏
         this.isCollapse = !this.isCollapse;
     },
     //保存路径
-    saveNavState(activePath){
-      window.sessionStorage.setItem('activePath',activePath); //存放在session里
-      this.activePath = activePath
-    },
+    // saveNavState(activePath){
+    //   window.sessionStorage.setItem('activePath',activePath); //存放在session里
+    //   this.activePath = activePath
+    // },
     openAppointment(){
       this.$router.push("/appointment")
     },
-
+    
+    openCalendar(){
+      this.$router.push("/calendar")
+    },
         openCustomer(){
       this.$router.push("/customer")
     },

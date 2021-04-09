@@ -4,12 +4,14 @@ import Login from '../components/Login.vue'
 import Noauth from '../components/Noauth.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
+import Calendar from '../components/admin/Calendar.vue'
 import Appointment from '../components/admin/Appointment.vue'
 import Customer from '../components/admin/Customer.vue'
 import Employee from '../components/admin/EmployeeList.vue'
 import EmpHome from '../components/EmpHome.vue'
 import EmpCustomer from '../components/EmpCustomer.vue'
 import EmpAppointment from '../components/EmpAppointment.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,9 +26,10 @@ const routes = [
   {
     path:'/home',
     component:Home,
-    redirect:'/welcome',
+    redirect:'/calendar',
     children:[
       {path:'/welcome', component:Welcome,},
+      {path:'/calendar', component:Calendar,},
       {path:'/appointment', component:Appointment,},
       {path:'/customer', component:Customer,},
       {path: '/employee', component:Employee,},
@@ -51,7 +54,8 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: 'hash',
+  mode:'history',
+  //mode: 'hash',
   base: process.env.BASE_URL,
 })
 

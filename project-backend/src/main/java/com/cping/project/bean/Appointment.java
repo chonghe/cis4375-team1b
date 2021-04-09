@@ -7,33 +7,34 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Appointment {
-    private int id;
+    private int appointment_id;
     private String customer_firstname;
     private String customer_lastname;
     private String time;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private String date;
     private String service_type;
     private String notes;
+    private String phone_number;
 
     public Appointment() {
     }
 
-    public Appointment(String customer_firstname, String customer_lastname, String time, Date date, String service_type, String notes) {
+    public Appointment(String customer_firstname, String customer_lastname, String time, String date, String service_type, String notes, String phone_number) {
         this.customer_firstname = customer_firstname;
         this.customer_lastname = customer_lastname;
         this.time = time;
         this.date = date;
         this.service_type = service_type;
         this.notes = notes;
+        this.phone_number = phone_number;
     }
 
-    public int getId() {
-        return id;
+    public int getAppointment_id() {
+        return appointment_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAppointment_id(int appointment_id) {
+        this.appointment_id = appointment_id;
     }
 
     public String getCustomer_firstname() {
@@ -60,11 +61,19 @@ public class Appointment {
         this.time = time;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -87,13 +96,14 @@ public class Appointment {
     @Override
     public String toString() {
         return "Appointment{" +
-                "id=" + id +
+                "appointment_id=" + appointment_id +
                 ", customer_firstname='" + customer_firstname + '\'' +
                 ", customer_lastname='" + customer_lastname + '\'' +
-                ", time=" + time +
-                ", date=" + date +
+                ", time='" + time + '\'' +
+                ", date='" + date + '\'' +
                 ", service_type='" + service_type + '\'' +
                 ", notes='" + notes + '\'' +
+                ", phone_number='" + phone_number + '\'' +
                 '}';
     }
 }

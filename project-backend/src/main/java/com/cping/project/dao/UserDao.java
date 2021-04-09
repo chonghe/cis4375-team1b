@@ -30,4 +30,6 @@ public interface UserDao {
     public User getUpdateUser(int id);
 
     public int editUser(User user);
+
+    public String getPasswordByUsername(@Param("username") String username);
 }
