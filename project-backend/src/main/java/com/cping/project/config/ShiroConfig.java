@@ -24,11 +24,11 @@ public class ShiroConfig {
         bean.setUnauthorizedUrl("/noauth");
         Map<String, String> filterMap = new LinkedHashMap<>();
         //filterMap.put("user", "roles[admin]");
-        filterMap.put("/login","anon");
-        filterMap.put("/api/appointment/**","anon");
-        filterMap.put("/appointment/**","authc");
-        filterMap.put("/calendar/**", "authc");
-        filterMap.put("/**","authc");
+        //filterMap.put("/login","anon");
+       // filterMap.put("/api/appointment/**","anon");
+       // filterMap.put("/appointment/**","authc");
+       // filterMap.put("/calendar/**", "authc");
+       // filterMap.put("/**","authc");
         //filterMap.put("/welcome", "roles[admin,user]");
 
 
