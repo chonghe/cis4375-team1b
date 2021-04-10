@@ -58,9 +58,22 @@
         <el-form-item label="Password" prop="password">
           <el-input v-model="userFormDia.password"></el-input>
         </el-form-item>
-        <el-form-item label="Role" prop="role">
-          <el-input v-model="userFormDia.role"></el-input>
+<el-form-item label="Role" prop="role">
+          <el-select
+            v-model="userFormDia.role"
+           placeholder="Choose Role"
+          >
+            <el-option
+              label="Staff"
+              value="Staff"
+            ></el-option>
+            <el-option
+              label="Admin"
+              value="Admin"
+            ></el-option>
+          </el-select>
         </el-form-item>
+        <el-form-item>
           <el-button type="primary" @click="onSubmit">Submit</el-button>
           <el-button @click="cancelApp">Cancel</el-button>
         </el-form-item>
@@ -80,8 +93,20 @@
         <el-form-item label="Password" prop="password">
           <el-input v-model="editForm.password"></el-input>
         </el-form-item>
-        <el-form-item label="Role" prop="role">
-          <el-input v-model="editForm.role"></el-input>
+<el-form-item label="Role" prop="role">
+          <el-select
+            v-model="editForm.role"
+           placeholder="Choose Role"
+          >
+            <el-option
+              label="Staff"
+              value="Staff"
+            ></el-option>
+            <el-option
+              label="Admin"
+              value="Admin"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
