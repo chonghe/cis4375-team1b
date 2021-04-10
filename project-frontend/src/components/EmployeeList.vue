@@ -164,7 +164,7 @@ export default {
 
     },
     async showEditDialog(employee_id) {
-      const { data: res } = await this.$http.get(`getUpdate/${employee_id}`);
+      const { data: res } = await this.$http.get(`getEmployee/${employee_id}`);
       this.editForm = res.data;
       this.editDialogVisible = true;
       console.log(res.data);
@@ -179,7 +179,7 @@ export default {
       this.getAllEmployee();
     },
     editDialogClosed() {
-      this.$refs.editFormRef.resetFields(); //重置信息
+      this.$refs.editFormRef.resetFields();
     },
   },
   created(){
