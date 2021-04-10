@@ -28,6 +28,10 @@
           <i class="el-icon-date"></i>
           <span>Employee manage</span>
         </el-menu-item>
+        <el-menu-item @click="openUser">
+          <i class="el-icon-date"></i>
+          <span>User manage</span>
+        </el-menu-item>
         <!-- unique-opened="" -->
           
         <!-- 一级菜单 -->
@@ -96,6 +100,9 @@ export default {
     },
     openEmployee(){
       this.$router.push("/employee")
+    },
+    openUser(){
+      this.$router.push("/userList")
     }
   },
 };
