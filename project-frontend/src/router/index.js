@@ -4,11 +4,15 @@ import Login from '../components/Login.vue'
 import Noauth from '../components/Noauth.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
-//import UserList from '../components/admin/UserList.vue'
+import Calendar from '../components/admin/Calendar.vue'
 import Appointment from '../components/admin/Appointment.vue'
 import Employee from '../components/EmployeeList.vue'
 import User from '../components/UserList.vue'
-
+import Customer from '../components/admin/Customer.vue'
+import EmpHome from '../components/EmpHome.vue'
+import EmpCustomer from '../components/EmpCustomer.vue'
+import EmpAppointment from '../components/EmpAppointment.vue'
+import EmpCalendar from '../components/EmpCalendar.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,15 +27,28 @@ const routes = [
   {
     path:'/home',
     component:Home,
-    redirect:'/welcome',
+    redirect:'/calendar',
     children:[
       {path:'/welcome', component:Welcome,},
-      //{path:'/user', component:UserList,},
+      {path:'/calendar', component:Calendar,},
       {path:'/appointment', component:Appointment,},
       {path: '/employee', component:Employee,},
       {path: '/userList', component: User,},
+      {path:'/customer', component:Customer,},
     ]
   },
+  
+  {
+    path:'/emphome',
+    component:EmpHome,
+    children:[
+      {path:'/welcome', component:Welcome,},
+      {path:'/empappointment', component:EmpAppointment,},
+      {path:'/empcustomer', component:EmpCustomer,},
+      {path:'/empcalendar', component:EmpCalendar,},
+    ]
+  },
+  
   {
     path:'/noauth',
     component: Noauth
@@ -40,7 +57,8 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: 'hash',
+  mode:'history',
+  //mode: 'hash',
   base: process.env.BASE_URL,
 })
 
