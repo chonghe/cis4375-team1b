@@ -3,7 +3,9 @@
     <el-header>
       <div>
         <img src="../assets/logo.png" alt />
+
         <span>Shapes Brow Bar Management System</span>
+
       </div>
       <el-button type="info" @click="logout">Logout</el-button>
     </el-header>
@@ -24,7 +26,7 @@
           <i class="el-icon-date"></i>
           <span>Appointments</span>
         </el-menu-item>
-
+        
          <el-menu-item @click="openCalendar">
           <i class="el-icon-date"></i>
           <span>Appointments Calendar</span>
@@ -34,9 +36,21 @@
           <i class="el-icon-date"></i>
           <span>Customers</span>
                   </el-menu-item>
+                  
+        <el-menu-item @click="openEmployee">
+          <i class="el-icon-date"></i>
+          <span>Employee manage</span>
+        </el-menu-item>
+        
+        <el-menu-item @click="openUser">
+          <i class="el-icon-date"></i>
+          <span>User manage</span>
+        </el-menu-item>
+
+        
+
         <!-- unique-opened="" -->
           
-        <!-- 一级菜单 -->
           <!-- <el-submenu :index="item.id+''" v-for="item in menuList" :key="item.id" @click="saveNavState(it.path)">
             <template slot="title">
               <i class="el-icon-location"></i>
@@ -100,6 +114,13 @@ export default {
     openAppointment(){
       this.$router.push("/appointment")
     },
+
+    openEmployee(){
+      this.$router.push("/employee")
+    },
+    openUser(){
+      this.$router.push("/userList")
+    }
     
     openCalendar(){
       this.$router.push("/calendar")

@@ -6,8 +6,9 @@ import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 import Calendar from '../components/admin/Calendar.vue'
 import Appointment from '../components/admin/Appointment.vue'
+import Employee from '../components/EmployeeList.vue'
+import User from '../components/UserList.vue'
 import Customer from '../components/admin/Customer.vue'
-import Employee from '../components/admin/EmployeeList.vue'
 import EmpHome from '../components/EmpHome.vue'
 import EmpCustomer from '../components/EmpCustomer.vue'
 import EmpAppointment from '../components/EmpAppointment.vue'
@@ -31,8 +32,9 @@ const routes = [
       {path:'/welcome', component:Welcome,},
       {path:'/calendar', component:Calendar,},
       {path:'/appointment', component:Appointment,},
-      {path:'/customer', component:Customer,},
       {path: '/employee', component:Employee,},
+      {path: '/userList', component: User,},
+      {path:'/customer', component:Customer,},
     ]
   },
   
