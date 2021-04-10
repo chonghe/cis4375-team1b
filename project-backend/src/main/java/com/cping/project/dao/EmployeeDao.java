@@ -1,3 +1,4 @@
+
 package com.cping.project.dao;
 
 import com.cping.project.bean.Employee;
@@ -17,9 +18,9 @@ public interface EmployeeDao {
 
     public int addEmployee(Employee employee);
 
-    public int deleteEmployee(int id);
+    public int deleteEmployee(int employee_id);
 
-    public Employee getUpdateEmployee(int id);
+    public Employee getUpdateEmployee(int employee_id);
 
     public int editEmployee(Employee employee);
 }

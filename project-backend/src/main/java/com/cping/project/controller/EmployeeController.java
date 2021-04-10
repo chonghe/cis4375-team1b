@@ -1,3 +1,4 @@
+
 package com.cping.project.controller;
 
 import com.cping.project.bean.Appointment;
@@ -36,8 +37,8 @@ public class EmployeeController {
     }
 
     @RequestMapping("/getUpdate/{employee_id}")
-    public Result getUpdateEmployee(@PathVariable("employee_id") int id){
-        Employee employee = employeeDao.getUpdateEmployee(id);
+    public Result getUpdateEmployee(@PathVariable("employee_id") int employee_id){
+        Employee employee = employeeDao.getUpdateEmployee(employee_id);
         return Result.succ(employee);
     }
 
