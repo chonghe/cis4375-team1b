@@ -11,7 +11,7 @@ import Employee from '../components/admin/EmployeeList.vue'
 import EmpHome from '../components/EmpHome.vue'
 import EmpCustomer from '../components/EmpCustomer.vue'
 import EmpAppointment from '../components/EmpAppointment.vue'
-
+import EmpCalendar from '../components/EmpCalendar.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,6 +43,7 @@ const routes = [
       {path:'/welcome', component:Welcome,},
       {path:'/empappointment', component:EmpAppointment,},
       {path:'/empcustomer', component:EmpCustomer,},
+      {path:'/empcalendar', component:EmpCalendar,},
     ]
   },
   
