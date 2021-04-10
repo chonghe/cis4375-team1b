@@ -33,7 +33,7 @@ public class UserListController {
 
     }
 
-    @RequestMapping("/getUpdate/{user_id}")
+    @RequestMapping("/getUser/{user_id}")
     public Result getUpdateUser(@PathVariable("user_id") int user_id){
         UserList userList = userlistDao.getUpdateUser(user_id);
         return Result.succ(userList);

@@ -13,6 +13,7 @@ public class Employee {
     private String birthday;
 
 
+
     public Employee() {
     }
 
@@ -22,7 +23,10 @@ public class Employee {
         this.employee_lastname = employee_lastname;
         this.username = username;
         this.birthday = birthday;
+
     }
+
+
 
     public int getEmployee_id(){
         return employee_id;
@@ -67,7 +71,6 @@ public class Employee {
     /*    public Date getBirthday() {
         return birthday;
     }
-
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }*/
@@ -83,4 +86,3 @@ public class Employee {
                 '}';
     }
 }
-

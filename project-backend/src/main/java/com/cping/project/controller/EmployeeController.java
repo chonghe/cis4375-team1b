@@ -36,7 +36,7 @@ public class EmployeeController {
         return i > 0 ? "success" : "error";
     }
 
-    @RequestMapping("/getUpdate/{employee_id}")
+    @RequestMapping("/getEmployee/{employee_id}")
     public Result getUpdateEmployee(@PathVariable("employee_id") int employee_id){
         Employee employee = employeeDao.getUpdateEmployee(employee_id);
         return Result.succ(employee);

@@ -19,6 +19,9 @@
     <update id="editEmployee">
         update employee
         <set>
+            <if test="employee_id != null">
+                employee_id=#{employee_id},
+            </if>
             <if test="employee_firstname != null">
                 employee_firstname=#{employee_firstname},
             </if>
@@ -32,16 +35,16 @@
                 birthday=#{birthday}
             </if>
         </set>
-        where employee_id=#{id}
+        where employee_id=#{employee_id}
     </update>
 
 
     <delete id="deleteEmployee">
-        delete from employee where employee_id = #{id}
+        delete from employee where employee_id = #{employee_id}
     </delete>
 
     <select id="getUpdateEmployee" resultType="com.cping.project.bean.Employee">
-        select * from employee where employee_id = #{id}
+        select * from employee where employee_id = #{employee_id}
     </select>
 
 
