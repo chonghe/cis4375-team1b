@@ -66,6 +66,7 @@
         <el-form-item label="Date of birth" prop="birthday">
           <el-input v-model="employeeFormDia.birthday"></el-input>
         </el-form-item>
+         <el-form-item>
           <el-button type="primary" @click="onSubmit">Submit</el-button>
           <el-button @click="cancelApp">Cancel</el-button>
         </el-form-item>
