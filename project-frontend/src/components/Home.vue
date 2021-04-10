@@ -120,7 +120,7 @@ export default {
     },
     openUser(){
       this.$router.push("/userList")
-    }
+    },
     
     openCalendar(){
       this.$router.push("/calendar")
