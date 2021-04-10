@@ -17,7 +17,7 @@
             >Appoinment</el-button
           >
         </el-tab-pane>
-        <el-tab-pane label="Employee" name="second">
+        <el-tab-pane label="Staff" name="second">
           <!-- form block -->
           <el-form
             ref="loginFormRef"
@@ -30,7 +30,7 @@
               <el-input
                 prefix-icon="el-icon-user"
                 v-model="loginForm.username"
-                placeholder="Employee Username"
+                placeholder="Staff Username"
               ></el-input>
             </el-form-item>
             <!-- password -->
@@ -84,7 +84,7 @@
       </el-tabs>
       <!-- <div class="log_btn">
                 <el-button type="primary" size="medium" round>Customer</el-button>
-                <el-button type="success" size="medium" round>Employee</el-button>
+                <el-button type="success" size="medium" round>Staff</el-button>
             </div> -->
       <el-dialog
         title="Appointment"
