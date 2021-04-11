@@ -61,7 +61,7 @@ export default {
       const { data: res } = await this.$http.get("appointment/allAppointment");
       res.data.forEach((element) => {
         events.push({
-          name: element.service_type,
+          name: element.customer_firstname,
           start: this.$moment(
             new Date(element.date + " " + element.time + ":00").getTime()
           ).format("YYYY-MM-DD HH:mm"),
