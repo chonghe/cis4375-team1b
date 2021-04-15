@@ -2,7 +2,7 @@
   <el-container class="home-container">
     <el-header>
       <div>
-        <img src="../assets/logo.png" alt />
+        <img src="../assets/logoshapes.png" alt />
 
         <span>Shapes Brow Bar Booking System</span>
 
