@@ -4,7 +4,7 @@
     <div class="login_box">
       <!-- logo -->
       <div class="avatar_box">
-        <img src="../assets/logo.png" alt="" srcset="" />
+        <img src="../assets/logoshapes.png" alt="" srcset="" />
       </div>
       <el-tabs
         type="border-card"
