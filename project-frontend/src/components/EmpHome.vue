@@ -5,7 +5,7 @@
     <el-header>
       <div>
         <img src="../assets/logo.png" alt />
-        <span>Shapes Brow Bar Management System (Staff)</span>
+        <span>Shapes Brow Bar Booking System (Staff)</span>
       </div>
       <el-button type="info" @click="logout">Logout</el-button>
     </el-header>
