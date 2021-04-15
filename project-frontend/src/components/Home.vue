@@ -4,7 +4,7 @@
       <div>
         <img src="../assets/logo.png" alt />
 
-        <span>Shapes Brow Bar Management System</span>
+        <span>Shapes Brow Bar Booking System</span>
 
       </div>
       <el-button type="info" @click="logout">Logout</el-button>
