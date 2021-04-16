@@ -91,6 +91,16 @@
           </template>
         </el-table-column>
       </el-table>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="queryAppointmentInfo.pageNum"
+        :page-sizes="[1, 2, 5, 100]"
+        :page-size="queryAppointmentInfo.pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      >
+      </el-pagination>
     </el-card>
     <el-dialog
       title="Appointment"
@@ -254,6 +264,12 @@
 export default {
   data() {
     return {
+      total: 0,
+      queryAppointmentInfo: {
+        query: "", //查询信息
+        pageNum: 1, //当前页
+        pageSize: 5, //每页最大数
+      },
       editForm: {},
       editDialogVisible: false,
       dialogVisible: false,
@@ -276,6 +292,15 @@ export default {
     };
   },
   methods: {
+    handleSizeChange(newSize) {
+      this.queryAppointmentInfo.pageSize = newSize;
+      this.getAllAppointment();
+    },
+    //pageNum的触发动作
+    handleCurrentChange(newPage) {
+      this.queryAppointmentInfo.pageNum = newPage;
+      this.getAllAppointment();
+    },
     async getAllAppointment() {
       const { data: res } = await this.$http.get("appointment/allAppointment");
       //console.log(res);
