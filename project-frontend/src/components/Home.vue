@@ -3,9 +3,9 @@
     <el-header>
       <div>
         <img src="../assets/logo.png" alt />
-        <span>Schedual management System</span>
+        <span>Shapes Brow Bar Management System</span>
       </div>
-      <el-button type="info" @click="logout">logout</el-button>
+      <el-button type="info" @click="logout">Logout</el-button>
     </el-header>
     <el-container>
       <el-aside :width="isCollapse?'64px':'200px'">
@@ -22,12 +22,18 @@
         >
         <el-menu-item @click="openAppointment">
           <i class="el-icon-date"></i>
-          <span>Appointment manage</span>
+          <span>Appointments</span>
         </el-menu-item>
-        <!-- <el-menu-item @click="openCalendar">
+
+         <el-menu-item @click="openCalendar">
           <i class="el-icon-date"></i>
-          <span>Appointment calendar</span>
-        </el-menu-item> -->
+          <span>Appointments Calendar</span>
+        </el-menu-item> 
+        
+        <el-menu-item @click="openCustomer">
+          <i class="el-icon-date"></i>
+          <span>Customers</span>
+                  </el-menu-item>
         <!-- unique-opened="" -->
           
         <!-- 一级菜单 -->
@@ -94,9 +100,14 @@ export default {
     openAppointment(){
       this.$router.push("/appointment")
     },
+    
     openCalendar(){
       this.$router.push("/calendar")
     },
+        openCustomer(){
+      this.$router.push("/customer")
+    },
+    
   },
 };
 </script>

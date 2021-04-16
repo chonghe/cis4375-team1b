@@ -1,11 +1,7 @@
 <template>
   <div>
-    Appointment List
+    Appointments List
     <!-- 面包屑导航 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">Home</el-breadcrumb-item>
-      <el-breadcrumb-item to="/user">Appointment manage</el-breadcrumb-item>
-    </el-breadcrumb>
     <!-- 用户列表主题部分 -->
     <el-card>
       <el-row :gutter="25">
@@ -63,8 +59,6 @@
           width="180"
         >
         </el-table-column>
-        <el-table-column prop="phone_number" label="Phone Number">
-        </el-table-column>
         <el-table-column prop="service_type" label="Service Type">
         </el-table-column>
         <el-table-column prop="date" label="Appointment Date">
@@ -120,7 +114,7 @@
           <el-input v-model="customerFormDia.customer_lastname"></el-input>
         </el-form-item>
         <el-form-item label="Phone" prop="phone_number">
-          <el-input v-model="customerForm.phone_number"></el-input>
+          <el-input v-model="customerFormDia.phone_number"></el-input>
         </el-form-item>
         <el-form-item label="Service Type" prop="service_type">
           <el-select
@@ -196,7 +190,7 @@
           <el-input v-model="editForm.customer_lastname"></el-input>
         </el-form-item>
         <el-form-item label="Phone" prop="phone_number">
-          <el-input v-model="customerForm.phone_number"></el-input>
+          <el-input v-model="customerFormDia.phone_number"></el-input>
         </el-form-item>
         <el-form-item label="Service Type" prop="service_type">
           <el-select

@@ -6,6 +6,12 @@ import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 import Calendar from '../components/admin/Calendar.vue'
 import Appointment from '../components/admin/Appointment.vue'
+import Customer from '../components/admin/Customer.vue'
+import Employee from '../components/admin/EmployeeList.vue'
+import EmpHome from '../components/EmpHome.vue'
+import EmpCustomer from '../components/EmpCustomer.vue'
+import EmpAppointment from '../components/EmpAppointment.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,8 +31,21 @@ const routes = [
       {path:'/welcome', component:Welcome,},
       {path:'/calendar', component:Calendar,},
       {path:'/appointment', component:Appointment,},
+      {path:'/customer', component:Customer,},
+      {path: '/employee', component:Employee,},
     ]
   },
+  
+  {
+    path:'/emphome',
+    component:EmpHome,
+    children:[
+      {path:'/welcome', component:Welcome,},
+      {path:'/empappointment', component:EmpAppointment,},
+      {path:'/empcustomer', component:EmpCustomer,},
+    ]
+  },
+  
   {
     path:'/noauth',
     component: Noauth
