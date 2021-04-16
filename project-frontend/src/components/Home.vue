@@ -25,10 +25,10 @@
           <span>Appointments</span>
         </el-menu-item>
 
-         <el-menu-item @click="openCalendar">
+         <!-- <el-menu-item @click="openCalendar">
           <i class="el-icon-date"></i>
           <span>Appointments Calendar</span>
-        </el-menu-item> 
+        </el-menu-item>  -->
         
         <el-menu-item @click="openCustomer">
           <i class="el-icon-date"></i>
@@ -101,9 +101,9 @@ export default {
       this.$router.push("/appointment")
     },
     
-    openCalendar(){
-      this.$router.push("/calendar")
-    },
+    // openCalendar(){
+    //   this.$router.push("/calendar")
+    // },
         openCustomer(){
       this.$router.push("/customer")
     },
