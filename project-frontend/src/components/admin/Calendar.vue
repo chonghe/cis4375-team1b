@@ -65,6 +65,9 @@ export default {
           start: this.$moment(
             new Date(element.date + " " + element.time + ":00").getTime()
           ).format("YYYY-MM-DD HH:mm"),
+          end: this.$moment(
+            (new Date(element.date + " " + element.time + ":00").getTime()
+          )+ (30 * 60 * 1000)).format("YYYY-MM-DD HH:mm"),
         });
       });
       this.events = events;
